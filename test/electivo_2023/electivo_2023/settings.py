@@ -95,9 +95,9 @@ DATABASES = {
     'default': {
         'HOST': 'localhost',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BASEFINAL',
-        'USER': 'angel',
-        'PASSWORD': '1234',
+        'NAME': 'Base_aws',
+        'USER': 'postgres',
+        'PASSWORD': 'smhwtsv',
         'OPTIONS': {
             'options': '-c timezone=UTC',
         }

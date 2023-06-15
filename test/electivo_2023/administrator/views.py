@@ -29,6 +29,23 @@ from productos.models import Producto
 
 from registration.models import Profile
 @login_required
+def change_password(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if password and password == confirm_password:
+            user = request.user
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Contraseña cambiada con éxito')
+            return redirect('admin_main')  # Cambia 'admin_main' por la URL a la que quieres redirigir después de cambiar la contraseña
+        else:
+            messages.error(request, 'Las contraseñas no coinciden')
+
+    template_name = 'administrator/password_change_form.html'  # Cambia 'password_change_form.html' por el nombre de tu plantilla
+    return render(request, template_name)
+@login_required
 def view_user(request, user_id):
     user_data = User.objects.get(pk=user_id)
     profile_data = Profile.objects.get(user_id=user_id)

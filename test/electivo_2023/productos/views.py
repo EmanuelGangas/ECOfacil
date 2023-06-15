@@ -140,7 +140,7 @@ from django.conf import settings
 from django.utils import timezone
 from pytz import timezone as pytz_timezone
 
-def generar_reporte_pdf(request):
+def generar_reporte_pdf_productos(request):
     time_zone = pytz_timezone(settings.TIME_ZONE)  # Obtiene el objeto de zona horaria
     productos_lista = Producto.objects.all()
     response = HttpResponse(content_type='application/pdf')
